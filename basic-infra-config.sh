@@ -7,7 +7,7 @@ sudo apt-get update && sudo apt -y install git zsh neovim wget
 # install oh-my-zsh and change the shell to zsh for the user blackhawk
 cd /tmp && wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh && sh install.sh --unattended && sudo chsh --shell /bin/zsh blackhawk
 
-# enable the plugins
+# enable the zsh plugins
 sed -i s/plugins=\(git\)/plugins=\(git\ z\ vi-mode\)/g ~/.zshrc
 
 # set-up jj as an alternative key to ESC in the zsh command line
