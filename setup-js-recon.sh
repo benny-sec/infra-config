@@ -3,6 +3,12 @@
 echo "Installing jq"
 sudo apt -y install jq
 
+if ! command -v go &> /dev/null
+then
+    echo "GO could not be found, Installing it now..."
+    bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/main/setup-go.zsh)"
+fi
+
 echo "Installing gau"
 GO111MODULE=on go get -u -v github.com/lc/gau
 
