@@ -19,7 +19,7 @@ go get -u github.com/tomnomnom/unfurl
 go env GOPATH | xargs -I % ls -alt %/bin
 
 echo "Installing scripthunter"
-DIR="~/workspace/tools" && mkdir -p "${DIR}" && cd "${DIR}" &&  git clone https://github.com/robre/scripthunter.git && cd "${DIR}"/scripthunter
+DIR="${HOME}/workspace/tools" && mkdir -p "${DIR}" && cd "${DIR}" &&  git clone https://github.com/robre/scripthunter.git && cd "${DIR}"/scripthunter
 
 echo "Done"
 
