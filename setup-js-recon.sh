@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo "Installing jq"
+sudo apt install jq
+
 echo "Installing gau"
 GO111MODULE=on go get -u -v github.com/lc/gau
 
