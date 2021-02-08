@@ -18,7 +18,12 @@ URL="https://download.oracle.com/otn-pub/java/jdk/11.0.10+8/020c4a6d33b74f6a9d2b
 
 jinfo="/usr/lib/jvm/.${JDK}.jinfo"
 
-wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" ${URL} -P /tmp
+if [ ${JDK} = "jdk1.8.0_281" ] && [ ! -f /tmp/${PKG} ]; then
+   echo "You need to manually download jdk1.8.0_281 into /tmp"
+   exit
+else
+    wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" ${URL} -P /tmp
+fi
 
 sudo apt-get -y install java-common
 
