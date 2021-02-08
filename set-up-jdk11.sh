@@ -33,7 +33,6 @@ sudo cp ~/.oh-my-zsh/custom/java_path.zsh /etc/profile.d/java_path.sh
 sudo cat <<EOF > /tmp/foo
 name="Oracle-${JDK}
 alias=Oracle-${JDK}
-priority=100
 section=main
 
 EOF
@@ -42,10 +41,10 @@ sudo mv /tmp/foo ${jinfo}
 
 for c in $(ls /usr/lib/jvm/${JDK}/bin); do
     bin=/usr/lib/jvm/${JDK}/bin/$c
-    sudo update-alternatives --install /usr/bin/$c $c ${bin} ${priority}
+    sudo update-alternatives --install /usr/bin/$c $c ${bin} 100
     sudo echo "jdkhl $c ${bin}" >>${jinfo}
 done
 
-update-java-alternatives -s ${JDK}
+sudo update-java-alternatives -s ${JDK}
 
-update-java-alternatives -l
+sudo update-java-alternatives -l
