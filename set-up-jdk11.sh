@@ -30,18 +30,20 @@ sudo tar -x -C /usr/lib/jvm -f /tmp/${PKG}
 echo -n "export JAVA_HOME=/usr/lib/jvm/${JDK}\nexport PATH=$PATH:/usr/lib/jvm/${JDK}/bin">~/.oh-my-zsh/custom/java_path.zsh
 sudo cp ~/.oh-my-zsh/custom/java_path.zsh /etc/profile.d/java_path.sh
 
-sudo cat <<EOF >${jinfo}
+sudo cat <<EOF > /tmp/foo
 name="Oracle-${JDK}
 alias=Oracle-${JDK}
-priority=1000
+priority=100
 section=main
 
 EOF
 
+sudo mv /tmp/foo ${jinfo}
+
 for c in $(ls /usr/lib/jvm/${JDK}/bin); do
     bin=/usr/lib/jvm/${JDK}/bin/$c
     sudo update-alternatives --install /usr/bin/$c $c ${bin} ${priority}
-    echo "jdkhl $c ${bin}" >>${jinfo}
+    sudo echo "jdkhl $c ${bin}" >>${jinfo}
 done
 
 update-java-alternatives -s ${JDK}
