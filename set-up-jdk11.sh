@@ -27,12 +27,9 @@ else
     wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" ${URL} -P /tmp
 fi
 
-
 sudo apt-get -y install java-common
 
-sudo mkdir -p /usr/lib/jvm
-
-sudo tar -x -C /usr/lib/jvm -f /tmp/${PKG}
+sudo mkdir -p /usr/lib/jvm && sudo tar -x -C /usr/lib/jvm -f /tmp/${PKG}
 
 # Set-up environment for both bash and ZSH
 echo -n "export JAVA_HOME=/usr/lib/jvm/${JDK}\nexport PATH=$PATH:/usr/lib/jvm/${JDK}/bin">~/.oh-my-zsh/custom/java_path.zsh
@@ -53,3 +50,7 @@ for c in $(ls /usr/lib/jvm/${JDK}/bin); do
     sudo update-alternatives --install /usr/bin/$c $c ${bin} 1000
     sudo echo "jdkhl $c ${bin}" >>${jinfo}
 done
+
+sudo update-java-alternatives -s ${JDK}
+
+sudo update-java-alternatives -l
