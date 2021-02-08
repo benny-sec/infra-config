@@ -16,7 +16,7 @@ URL="https://download.oracle.com/otn-pub/java/jdk/11.0.10+8/020c4a6d33b74f6a9d2b
 # PKG="${JDK}_linux-x64_bin.tar.gz"
 # URL="https://download.oracle.com/otn-pub/java/jdk/15.0.2%2B7/0d1cfde4252546c6931946de8db48ee2/${PKG}"
 
-jinfo="/usr/lib/jvm/.${jdk}.jinfo"
+jinfo="/usr/lib/jvm/.${JDK}.jinfo"
 
 wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" ${URL} -P /tmp
 
