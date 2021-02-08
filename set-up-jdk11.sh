@@ -32,7 +32,7 @@ sudo apt-get -y install java-common
 sudo mkdir -p /usr/lib/jvm && sudo tar -x -C /usr/lib/jvm -f /tmp/${PKG}
 
 # Set-up environment for both bash and ZSH
-echo -n "export JAVA_HOME=/usr/lib/jvm/${JDK}\nexport PATH=$PATH:/usr/lib/jvm/${JDK}/bin">~/.oh-my-zsh/custom/java_path.zsh
+echo -e "export JAVA_HOME=/usr/lib/jvm/${JDK}\nexport PATH=$PATH:/usr/lib/jvm/${JDK}/bin">~/.oh-my-zsh/custom/java_path.zsh
 sudo cp ~/.oh-my-zsh/custom/java_path.zsh /etc/profile.d/java_path.sh
 
 cat <<EOF > /tmp/foo
