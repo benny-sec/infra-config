@@ -2,14 +2,14 @@
 
 # https://www.oracle.com/java/technologies/javase-downloads.html
 # Java SE 8
-# JDK="jdk1.8.0_281"
-# PKG="jdk-8u281-linux-x64.gz" 
-# URL=https://download.oracle.com/otn-pub/java/jdk/8u281-b09/89d678f2be164786b292527658ca1605/${PKG}
+ JDK="jdk1.8.0_281"
+ PKG="jdk-8u281-linux-x64.tar.gz"
+ URL=https://download.oracle.com/otn-pub/java/jdk/8u281-b09/89d678f2be164786b292527658ca1605/${PKG}
 
 # Java SE 11 (LTS)
-JDK="jdk-11.0.10"
-PKG="${JDK}_linux-x64_bin.tar.gz" 
-URL="https://download.oracle.com/otn-pub/java/jdk/11.0.10+8/020c4a6d33b74f6a9d2bc6fbf189da81/${PKG}"
+#JDK="jdk-11.0.10"
+#PKG="${JDK}_linux-x64_bin.tar.gz"
+#URL="https://download.oracle.com/otn-pub/java/jdk/11.0.10+8/020c4a6d33b74f6a9d2bc6fbf189da81/${PKG}"
 
 # Java SE 15
 # JDK="jdk-15.0.2"
@@ -18,12 +18,15 @@ URL="https://download.oracle.com/otn-pub/java/jdk/11.0.10+8/020c4a6d33b74f6a9d2b
 
 jinfo="/usr/lib/jvm/.${JDK}.jinfo"
 
-if [ ${JDK} = "jdk1.8.0_281" ] && [ ! -f /tmp/${PKG} ]; then
-   echo "You need to manually download jdk1.8.0_281 into /tmp"
-   exit
+if [ ${JDK} = "jdk1.8.0_281" ]; then
+    if [ ! -f /tmp/${PKG} ]; then
+       echo "You need to manually download jdk1.8.0_281 into /tmp"
+       exit
+    fi
 else
     wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" ${URL} -P /tmp
 fi
+
 
 sudo apt-get -y install java-common
 
@@ -50,7 +53,3 @@ for c in $(ls /usr/lib/jvm/${JDK}/bin); do
     sudo update-alternatives --install /usr/bin/$c $c ${bin} 1000
     sudo echo "jdkhl $c ${bin}" >>${jinfo}
 done
-
-sudo update-java-alternatives -s ${JDK}
-
-sudo update-java-alternatives -l
