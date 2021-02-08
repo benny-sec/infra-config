@@ -30,7 +30,7 @@ sudo tar -x -C /usr/lib/jvm -f /tmp/${PKG}
 echo -n "export JAVA_HOME=/usr/lib/jvm/${JDK}\nexport PATH=$PATH:/usr/lib/jvm/${JDK}/bin">~/.oh-my-zsh/custom/java_path.zsh
 sudo cp ~/.oh-my-zsh/custom/java_path.zsh /etc/profile.d/java_path.sh
 
-sudo cat <<EOF > /tmp/foo
+cat <<EOF > /tmp/foo
 name="Oracle-${JDK}
 alias=Oracle-${JDK}
 section=main
