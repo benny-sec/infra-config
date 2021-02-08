@@ -2,14 +2,14 @@
 
 # https://www.oracle.com/java/technologies/javase-downloads.html
 # Java SE 8
- JDK="jdk1.8.0_281"
- PKG="jdk-8u281-linux-x64.tar.gz"
- URL=https://download.oracle.com/otn-pub/java/jdk/8u281-b09/89d678f2be164786b292527658ca1605/${PKG}
+# JDK="jdk1.8.0_281"
+# PKG="jdk-8u281-linux-x64.tar.gz"
+# URL=https://download.oracle.com/otn-pub/java/jdk/8u281-b09/89d678f2be164786b292527658ca1605/${PKG}
 
 # Java SE 11 (LTS)
-#JDK="jdk-11.0.10"
-#PKG="${JDK}_linux-x64_bin.tar.gz"
-#URL="https://download.oracle.com/otn-pub/java/jdk/11.0.10+8/020c4a6d33b74f6a9d2bc6fbf189da81/${PKG}"
+JDK="jdk-11.0.10"
+PKG="${JDK}_linux-x64_bin.tar.gz"
+URL="https://download.oracle.com/otn-pub/java/jdk/11.0.10+8/020c4a6d33b74f6a9d2bc6fbf189da81/${PKG}"
 
 # Java SE 15
 # JDK="jdk-15.0.2"
