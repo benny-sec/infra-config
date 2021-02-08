@@ -1,34 +1,49 @@
 #!/usr/bin/env bash
 
-JDK="jdk-11.0.10"
-DEB="${JDK}_linux-x64_bin.deb"
+# https://www.oracle.com/java/technologies/javase-downloads.html
+# Java SE 8
+JDK="jdk1.8.0_281"
+PKG="${JDK}-linux-x64.tar.gz" 
+URL=https://download.oracle.com/otn/java/jdk/8u281-b09/89d678f2be164786b292527658ca1605/${PKG}
 
-wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/11.0.10+8/020c4a6d33b74f6a9d2bc6fbf189da81/$DEB
+# Java SE 11 (LTS)
+# JDK="jdk-11.0.10"
+# PKG="${JDK}_linux-x64_bin.tar.gz" 
+# URL="https://download.oracle.com/otn/java/jdk/11.0.10%2B8/020c4a6d33b74f6a9d2bc6fbf189da81/${PKG}"
 
-sudo dpkg -i ${DEB}
+# Java SE 15
+# JDK="jdk-15.0.2"
+# PKG="${JDK}_linux-x64_bin.tar.gz"
+# URL="https://download.oracle.com/otn-pub/java/jdk/15.0.2%2B7/0d1cfde4252546c6931946de8db48ee2/${PKG}"
 
+jinfo="/usr/lib/jvm/.${jdk}.jinfo"
+
+wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" ${URL} -P /tmp
+
+sudo apt-get -y install java-common
+
+sudo mkdir -p /usr/lib/jvm
+
+sudo tar -x -C /usr/lib/jvm -f /tmp/${PKG}
+
+# Set-up environment for both bash and ZSH
 echo -n "export JAVA_HOME=/usr/lib/jvm/${JDK}\nexport PATH=$PATH:/usr/lib/jvm/${JDK}/bin">~/.oh-my-zsh/custom/java_path.zsh
-
 sudo cp ~/.oh-my-zsh/custom/java_path.zsh /etc/profile.d/java_path.sh
 
-rm -rf ${DEB}
+sudo cat <<EOF >${jinfo}
+name="Oracle-${JDK}
+alias=Oracle-${alias}
+priority=1000
+section=main
 
-# TO-DO:  fix the alternative's configuration.
-# Issue:  The system still uses Open JDK even after the Oracle JDK is installed.
-#         the installation doesn't add the Oracle Java to the list of available alternatives and hence can't switch the java package to use. 
-#     
-# helper links: 
-#              1.https://tech.lanesnotes.com/2008/03/using-alternatives-in-linux-to-use.html
-#              2. https://askubuntu.com/questions/315646/update-java-alternatives-vs-update-alternatives-config-java 
-#  ➜  ~ /usr/lib/jvm/jdk-11.0.10/bin/java --version
-#  java 11.0.10 2021-01-19 LTS
-#  Java(TM) SE Runtime Environment 18.9 (build 11.0.10+8-LTS-162)
-#  Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.10+8-LTS-162, mixed mode)
-#  ➜  ~ java --version
-#  openjdk 11.0.9.1 2020-11-04
-#  OpenJDK Runtime Environment (build 11.0.9.1+1-Ubuntu-0ubuntu1.20.04)
-#  OpenJDK 64-Bit Server VM (build 11.0.9.1+1-Ubuntu-0ubuntu1.20.04, mixed mode, sharing)
-#  ➜  ~ cat ~/.oh-my-zsh/custom/java_path.zsh
-#                 export JAVA_HOME=/usr/lib/jvm/jdk-11.0.10\nexport PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/blackhawk/.fzf/bin:/usr/lib/jvm/jdk-11.0.10/bin:/usr/lib/jvm/jdk-11.0.10/bin% 
+EOF
 
+for c in $(ls /usr/lib/jvm/${jdk}/bin); do
+    bin=/usr/lib/jvm/${jdk}/bin/$c
+    sudo update-alternatives --install /usr/bin/$c $c ${bin} ${priority}
+    echo "jdkhl $c ${bin}" >>${jinfo}
+done
 
+update-java-alternatives -s ${jdk}
+
+update-java-alternatives -l
