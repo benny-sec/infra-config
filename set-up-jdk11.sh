@@ -41,6 +41,7 @@ sudo mv /tmp/foo ${jinfo}
 
 for c in $(ls /usr/lib/jvm/${JDK}/bin); do
     bin=/usr/lib/jvm/${JDK}/bin/$c
+    echo "sudo update-alternatives --install /usr/bin/$c $c ${bin} 100"
     sudo update-alternatives --install /usr/bin/$c $c ${bin} 100
     sudo echo "jdkhl $c ${bin}" >>${jinfo}
 done
