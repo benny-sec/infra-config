@@ -36,8 +36,8 @@ sudo mkdir -p /usr/lib/jvm && sudo tar -x -C /usr/lib/jvm -f /tmp/${PKG}
 # Set-up environment for both bash and ZSH
 # FixMe: This will be an issue when we manually switch the JDK version
 # Maybe remove it from here and maintain as a small gist?
-echo -e "export JAVA_HOME=/usr/lib/jvm/${JDK}\nexport PATH=$PATH:/usr/lib/jvm/${JDK}/bin">~/.oh-my-zsh/custom/java_path.zsh
-sudo cp ~/.oh-my-zsh/custom/java_path.zsh /etc/profile.d/java_path.sh
+echo -e "export JAVA_HOME=/usr/lib/jvm/${JDK}">~/.oh-my-zsh/custom/java_home.zsh
+sudo cp ~/.oh-my-zsh/custom/java_home.zsh /etc/profile.d/java_home.sh
 
 
 # create a .jinfo file. 
