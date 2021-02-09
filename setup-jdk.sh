@@ -18,6 +18,7 @@ URL="https://download.oracle.com/otn-pub/java/jdk/11.0.10+8/020c4a6d33b74f6a9d2b
 
 jinfo="/usr/lib/jvm/.${JDK}.jinfo"
 
+# FixMe: Identify a URL that can be used to download JDK-8  
 if [ ${JDK} = "jdk1.8.0_281" ]; then
     if [ ! -f /tmp/${PKG} ]; then
        echo "You need to manually download jdk1.8.0_281 into /tmp"
@@ -27,14 +28,20 @@ else
     wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" ${URL} -P /tmp
 fi
 
+# for update-java-alternatives command
 sudo apt-get -y install java-common
 
 sudo mkdir -p /usr/lib/jvm && sudo tar -x -C /usr/lib/jvm -f /tmp/${PKG}
 
 # Set-up environment for both bash and ZSH
+# FixMe: This will be an issue when we manually switch the JDK version
+# Maybe remove it from here and maintain as a small gist?
 echo -e "export JAVA_HOME=/usr/lib/jvm/${JDK}\nexport PATH=$PATH:/usr/lib/jvm/${JDK}/bin">~/.oh-my-zsh/custom/java_path.zsh
 sudo cp ~/.oh-my-zsh/custom/java_path.zsh /etc/profile.d/java_path.sh
 
+
+# create a .jinfo file. 
+# This is needed by the update-java-alternatives command to identify the JDK installations.   
 cat <<EOF > /tmp/foo
 name="Oracle-${JDK}
 alias=Oracle-${JDK}
@@ -45,12 +52,14 @@ EOF
 
 sudo mv /tmp/foo ${jinfo}
 
+# create the symlinks using the update-alternatives command
+# e.g /usr/bin/java -> /etc/alternatives/java -> /usr/lib/jvm/java-14-oracle/bin/java 
 for c in $(ls /usr/lib/jvm/${JDK}/bin); do
     bin=/usr/lib/jvm/${JDK}/bin/$c
     sudo update-alternatives --install /usr/bin/$c $c ${bin} 1000
     sudo echo "jdkhl $c ${bin}" >>${jinfo}
 done
 
+# list available JDKs andd switch to the one installed above.
 sudo update-java-alternatives -s ${JDK}
-
 sudo update-java-alternatives -l
