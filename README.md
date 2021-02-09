@@ -3,5 +3,5 @@ bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/mai
 
 ## JDK 11.x set-up
 
-bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/main/set-up-jdk11.sh)"
+bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/main/setup-jdk.sh)"
 
