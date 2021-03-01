@@ -4,7 +4,7 @@
 # Java SE 8
 # JDK="jdk1.8.0_281"
 # PKG="jdk-8u281-linux-x64.tar.gz"
-# URL=https://download.oracle.com/otn-pub/java/jdk/8u281-b09/89d678f2be164786b292527658ca1605/${PKG}
+# URL=https://github.com/benny-sec/infra-config/raw/main/sw_backup/${PKG}
 
 # Java SE 11 (LTS)
 JDK="jdk-11.0.10"
@@ -18,15 +18,8 @@ URL="https://download.oracle.com/otn-pub/java/jdk/11.0.10+8/020c4a6d33b74f6a9d2b
 
 jinfo="/usr/lib/jvm/.${JDK}.jinfo"
 
-# FixMe: Identify a URL that can be used to download JDK-8  
-if [ ${JDK} = "jdk1.8.0_281" ]; then
-    if [ ! -f /tmp/${PKG} ]; then
-       echo "You need to manually download jdk1.8.0_281 into /tmp"
-       exit
-    fi
-else
-    wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" ${URL} -P /tmp
-fi
+wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" ${URL} -P /tmp
+
 
 # for update-java-alternatives command
 sudo apt-get -y install java-common
