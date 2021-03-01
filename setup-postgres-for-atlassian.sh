@@ -1,12 +1,32 @@
 #!/usr/bin/env bash
 
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo apt-get update && sudo apt-get -y install postgresql-11
 
-# for bamboo
-sudo apt-get update && sudo apt-get -y install postgresql-12
+# Create the Jira user and a DB:
+sudo -u postgres psql -c "CREATE ROLE jirauser PASSWORD 'pass' NOSUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;"
+sudo -u postgres psql -c "CREATE DATABASE jiradb OWNER jirauser;"
 
-sudo -s -H -u postgres
-# Create the Bamboo user:
-createuser -S -d -r -P -E bamboouser
-# Create the bamboo database:
-createdb -O bamboouser bamboo
-exit
+# Create the Confluence user and a DB:
+sudo -u postgres psql -c "CREATE ROLE confluenceuser PASSWORD 'pass' NOSUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;"
+sudo -u postgres psql -c "CREATE DATABASE confluencedb OWNER confluenceuser;"
+
+# Create the Bitbucket user and a DB:
+sudo -u postgres psql -c "CREATE ROLE bitbucketuser PASSWORD 'pass' NOSUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;"
+sudo -u postgres psql -c "CREATE DATABASE bitbucketdb OWNER bitbucketuser;"
+
+# Create the Bamboo user and a DB:
+sudo -u postgres psql -c "CREATE ROLE bamboouser PASSWORD 'pass' NOSUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;"
+sudo -u postgres psql -c "CREATE DATABASE bamboodb OWNER bamboouser;"
+
+# Create the Fisheye user and a DB:
+sudo -u postgres psql -c "CREATE ROLE fisheyeuser PASSWORD 'pass' NOSUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;"
+sudo -u postgres psql -c "CREATE DATABASE fisheyedb OWNER fisheyeuser;"
+
+# Create the Crowd user and a DB:
+sudo -u postgres psql -c "CREATE ROLE crowduser PASSWORD 'pass' NOSUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;"
+sudo -u postgres psql -c "CREATE DATABASE crowddb OWNER crowduser;"
+
+
+
