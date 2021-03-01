@@ -6,7 +6,7 @@ sudo apt -y install wget
 
 cd /tmp && wget https://product-downloads.atlassian.com/software/jira/downloads/"${JIRA_PKG}"
 
-wget "https://raw.githubusercontent.com/benny-sec/infra-config/main/jira/response.varfile"
+wget "https://raw.githubusercontent.com/benny-sec/infra-config/main/atlassian/jira/response.varfile"
 
 chmod +x "${JIRA_PKG}"
 
