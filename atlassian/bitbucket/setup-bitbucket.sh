@@ -8,7 +8,12 @@ cd /tmp && wget "https://product-downloads.atlassian.com/software/stash/download
 
 wget "https://raw.githubusercontent.com/benny-sec/infra-config/main/atlassian/bitbucket/response.varfile"
 
+wget "https://raw.githubusercontent.com/benny-sec/infra-config/main/atlassian/bitbucket/bitbucket.properties"
+
 chmod +x "${BITBUCKET_PKG}"
 
 sudo ./"${BITBUCKET_PKG}" -q -varfile response.varfile
+
+sudo cp bitbucket.properties /var/atlassian/application-data/bitbucket/shared/
+
 
