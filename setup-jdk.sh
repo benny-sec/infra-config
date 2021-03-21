@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Java SE 7
+#JDK="jdk1.7.0_80"
+#PKG="jdk-7u80-linux-x64.tar.gz"
+#URL=https://github.com/benny-sec/infra-config/raw/main/sw_backup/${PKG}
+
+
 # https://www.oracle.com/java/technologies/javase-downloads.html
 # Java SE 8
 # JDK="jdk1.8.0_281"
