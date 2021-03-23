@@ -1,6 +1,6 @@
 #/usr/bin/env bash
 
-JIRA_PKG="atlassian-jira-software-8.15.0-x64.bin"
+JIRA_PKG="atlassian-jira-software-8.16.0-x64.bin"
 
 sudo apt -y install wget
 
