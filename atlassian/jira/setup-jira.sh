@@ -2,7 +2,7 @@
 
 JIRA_PKG="atlassian-jira-software-8.16.0-x64.bin"
 
-sudo apt -y install wget
+sudo apt -y install wget fontconfig
 
 cd /tmp && wget https://product-downloads.atlassian.com/software/jira/downloads/"${JIRA_PKG}"
 
