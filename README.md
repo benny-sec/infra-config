@@ -8,7 +8,7 @@ bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/mai
 bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/main/setup-postgres-for-atlassian.sh)"
 
 ## Atlassion Jira set-up
-https://raw.githubusercontent.com/benny-sec/infra-config/main/atlassian/jira/setup-jira.sh
+bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/main/atlassian/jira/setup-jira.sh)"
 
 ## Atlassion Bamboo set-up
 bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/main/setup-bamboo.sh)"
