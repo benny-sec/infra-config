@@ -1,6 +1,6 @@
 #/usr/bin/env bash
 
-CONFLUENCE_PKG="atlassian-confluence-7.11.2-x64.bin
+CONFLUENCE_PKG="atlassian-confluence-7.11.2-x64.bin"
 
 sudo apt -y install wget fontconfig
 
