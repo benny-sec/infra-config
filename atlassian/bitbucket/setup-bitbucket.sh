@@ -2,7 +2,10 @@
 
 BITBUCKET_PKG="atlassian-bitbucket-7.11.1-x64.bin"
 
-sudo apt -y install wget
+sudo apt -y install wget fontconfig
+
+# Install PostgreSQL if not already installed
+which psql > /dev/null || bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/main/setup-postgres-for-atlassian.sh)"
 
 cd /tmp && wget "https://product-downloads.atlassian.com/software/stash/downloads/${BITBUCKET_PKG}"
 
