@@ -10,6 +10,9 @@ bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/mai
 ## Atlassion Jira set-up
 bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/main/atlassian/jira/setup-jira.sh)"
 
+## Atlassion Confluence set-up
+bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/main/atlassian/confluence/setup-confluence.sh)"
+
 ## Atlassion Bamboo set-up
 bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/main/setup-bamboo.sh)"
 
