@@ -7,7 +7,7 @@ sudo apt-get update && sudo apt -y install git zsh neovim wget
 # install oh-my-zsh and change the shell to zsh for the user blackhawk
 cd /tmp && wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh && sh install.sh --unattended && sudo chsh --shell /bin/zsh $USER
 
-# enable the zsh plugins
+# enable the zsh plugins & set theme
 sed -i s/plugins=\(git\)/plugins=\(git\ z\ vi-mode\)/g ~/.zshrc
 sed -i 's/ZSH_THEME=".*/ZSH_THEME="blinks"/g' ~/.zshrc
 
