@@ -2,7 +2,7 @@
 
 mkdir -p ~/workspace/tools 
 
-sudo apt-get update && sudo apt -y install git zsh neovim wget
+sudo apt-get update && sudo apt -y install git zsh neovim net-tools wget
 
 # install oh-my-zsh and change the shell to zsh for the user blackhawk
 cd /tmp && wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh && sh install.sh --unattended && sudo chsh --shell /bin/zsh $USER
