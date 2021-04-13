@@ -7,6 +7,10 @@ terraform {
   }
 }
 
+variable "server-name" {
+  type = string
+}
+
 provider "google" {
 
   credentials = file("/home/dare/workspace/creds/gcp_terraform_sandbox_0ddf5d0aa8f5.json")
@@ -16,12 +20,12 @@ provider "google" {
   zone    = "us-central1-c"
 }
 
-data "http" "base-infra-script" {
+data "http" "basic-infra-script" {
   url = "https://raw.githubusercontent.com/benny-sec/infra-config/main/basic-infra-config.sh"
 }
 
-resource "google_compute_instance" "base_instance" {
-  name         = "base-server"
+resource "google_compute_instance" "base_compute_instance" {
+  name         = var.server-name
   machine_type = "e2-standard-2"
 
   boot_disk {
@@ -38,14 +42,14 @@ resource "google_compute_instance" "base_instance" {
   }
 
   provisioner "file" {
-    content     = data.http.base-infra-script.body
+    content     = data.http.basic-infra-script.body
     destination = "/tmp/script.sh"
     
     connection {
         type        = "ssh"
         user        = "blackhawk"
         private_key = file("/home/dare/workspace/creds/google-cloud-def-key")
-        host        = google_compute_instance.base_instance.network_interface[0].access_config[0].nat_ip
+        host        = google_compute_instance.base_compute_instance.network_interface[0].access_config[0].nat_ip
     } 
 
 
@@ -56,7 +60,7 @@ resource "google_compute_instance" "base_instance" {
         type        = "ssh"
         user        = "blackhawk"
         private_key = file("/home/dare/workspace/creds/google-cloud-def-key")
-        host        = google_compute_instance.base_instance.network_interface[0].access_config[0].nat_ip
+        host        = google_compute_instance.base_compute_instance.network_interface[0].access_config[0].nat_ip
     } 
     
     inline = [
@@ -66,8 +70,8 @@ resource "google_compute_instance" "base_instance" {
   }
 }
 
-output "ip_base_server" {
-    value =  google_compute_instance.base_instance.network_interface[0].access_config[0].nat_ip
+output "ip_remote_server" {
+    value =  google_compute_instance.base_compute_instance.network_interface[0].access_config[0].nat_ip
 }
 
 
