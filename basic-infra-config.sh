@@ -9,6 +9,8 @@ cd /tmp && wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/i
 
 # enable the zsh plugins
 sed -i s/plugins=\(git\)/plugins=\(git\ z\ vi-mode\)/g ~/.zshrc
+sed -i 's/ZSH_THEME=".*/ZSH_THEME="blinks"/g' ~/.zshrc
+
 
 # set-up jj as an alternative key to ESC in the zsh command line
 sed -i s/bindkey\ -v/bindkey\ -v\\nbindkey\ jj\ vi-cmd-mode/  ~/.oh-my-zsh/plugins/vi-mode/vi-mode.plugin.zsh
