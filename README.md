@@ -18,3 +18,6 @@ bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/mai
 
 ## Atlassion Bitbucket set-up
 bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/main/atlassian/bitbucket/setup-bitbucket.sh)"
+
+## Atlassian Jira Service Desk
+bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/main/atlassian/jira-service-desk/setup-jira-service-desk.sh)"
