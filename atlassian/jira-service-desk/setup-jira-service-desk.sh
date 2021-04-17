@@ -9,7 +9,7 @@ which psql > /dev/null || bash -c "$(wget -O- https://raw.githubusercontent.com/
 
 cd /tmp && wget https://product-downloads.atlassian.com/software/jira/downloads/"${JIRA_SD_PKG}"
 
-wget "https://raw.githubusercontent.com/benny-sec/infra-config/main/atlassian/jira/response.varfile"
+wget "https://raw.githubusercontent.com/benny-sec/infra-config/main/atlassian/jira-service-desk/response.varfile"
 
 chmod +x "${JIRA_SD_PKG}"
 
