@@ -1,6 +1,6 @@
 #/usr/bin/env bash
 
-JIRA_SD_PKG="atlassian-servicedesk-4.16.0-x64.bin"
+JIRA_SD_PKG="atlassian-servicedesk-4.16.1-x64.bin"
 
 sudo apt -y install wget fontconfig
 
