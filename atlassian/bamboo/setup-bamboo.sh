@@ -5,10 +5,13 @@ BAMBOO_URL="https://Product-downloads.atlassian.com/software/bamboo/downloads/${
 BAMBOO_INSTALL_DIR="/opt/atlassian/bamboo/"
 BAMBOO_DATA_DIR="/var/atlassian/application-data/bamboo"
 
-wget "${BAMBOO_URL}" -P /tmp
+# Set-up Oracle JDK 1.8
+which java > /dev/null || bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/main/setup-jdk.sh)"
 
 # Install PostgreSQL if not already installed
 which psql > /dev/null || bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/main/setup-postgres-for-atlassian.sh)"
+
+wget "${BAMBOO_URL}" -P /tmp
 
 sudo mkdir -p "${BAMBOO_INSTALL_DIR}" && sudo tar -xC "${BAMBOO_INSTALL_DIR}" -f /tmp/${BAMBOO_PKG}
 
