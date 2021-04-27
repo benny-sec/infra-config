@@ -5,13 +5,10 @@ BAMBOO_URL="https://Product-downloads.atlassian.com/software/bamboo/downloads/${
 BAMBOO_INSTALL_DIR="/opt/atlassian/bamboo/"
 BAMBOO_DATA_DIR="/var/atlassian/application-data/bamboo"
 
-if ! command -v  wget &> /dev/null
-then
-    echo "wget not available, installing it now..."
-    sudo apt update && sudo apt install wget
-fi
-
 wget "${BAMBOO_URL}" -P /tmp
+
+# Install PostgreSQL if not already installed
+which psql > /dev/null || bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/main/setup-postgres-for-atlassian.sh)"
 
 sudo mkdir -p "${BAMBOO_INSTALL_DIR}" && sudo tar -xC "${BAMBOO_INSTALL_DIR}" -f /tmp/${BAMBOO_PKG}
 

@@ -7,6 +7,9 @@ CRUCIBLE_DATA_DIR="/var/atlassian/application-data/crucible"
 
 sudo apt -y install wget unzip
 
+# Install PostgreSQL if not already installed
+which psql > /dev/null || bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/main/setup-postgres-for-atlassian.sh)"
+
 wget "${CRUCIBLE_URL}" -P /tmp
 
 sudo mkdir -p "${CRUCIBLE_INSTALL_DIR}" && sudo unzip /tmp/${CRUCIBLE_PKG} -d "${CRUCIBLE_INSTALL_DIR}"
