@@ -13,9 +13,9 @@ variable "server-name" {
 
 provider "google" {
 
-  credentials = file("/home/dare/workspace/creds/gcp_terraform_sandbox_0ddf5d0aa8f5.json")
+  credentials = file("/home/dare/workspace/creds/gcp-terraform-durable-destiny-311610-35cc8a81c24a.json")
 
-  project = "sandbox-302518"
+  project = "durable-destiny-311610"
   region  = "us-central1"
   zone    = "us-central1-c"
 }
