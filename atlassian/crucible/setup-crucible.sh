@@ -7,6 +7,10 @@ CRUCIBLE_DATA_DIR="/var/atlassian/application-data/crucible"
 
 sudo apt -y install wget unzip
 
+# Set-up Oracle JDK 1.8
+which java > /dev/null || bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/main/setup-jdk.sh)"
+
+
 # Install PostgreSQL if not already installed
 which psql > /dev/null || bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/main/setup-postgres-for-atlassian.sh)"
 
