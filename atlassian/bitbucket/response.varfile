@@ -1,7 +1,7 @@
 # install4j response file for Bitbucket 7.10.1
 app.bitbucketHome=/var/atlassian/application-data/bitbucket
 app.install.service$Boolean=true
-httpPort=5990
+httpPort$Long=5990
 installation.type=DATA_CENTER_INSTALL
 sys.adminRights$Boolean=true
 sys.installationDir=/opt/atlassian/bitbucket/7.10.1
