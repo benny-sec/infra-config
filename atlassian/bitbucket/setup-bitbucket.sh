@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-BITBUCKET_PKG="atlassian-bitbucket-7.12.0-x64.bin"
+BITBUCKET_PKG="atlassian-bitbucket-7.12.1-x64.bin"
 
 sudo apt -y install wget fontconfig
 
