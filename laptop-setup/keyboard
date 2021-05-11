@@ -1,0 +1,5 @@
+XKBLAYOUT="us"
+BACKSPACE="guess"
+XKBVARIANT="dvp"
+XKBMODEL="pc105"
+XKBOPTIONS="keypad:atm"

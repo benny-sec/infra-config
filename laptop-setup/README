@@ -1,0 +1,11 @@
+# Keyboard configuration for Atm style numeric keypad on Programmers Dvorak 
+  
+    sudo cp keyboard /etc/default/keyboard
+
+# Keyboard mapping for setting Scroll Lock for the Caps Lock and Right menu key as backspace
+
+    cp xmodmaprc ~/.xmodmaprc 
+
+    xmodmap ~/.xmodmaprc
+
+
