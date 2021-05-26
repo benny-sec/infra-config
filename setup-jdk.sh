@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# setup_dk.sh --install-version [1.7 | 1.8 | 11 | 15 ]
+# setup_jdk.sh --install-version [1.7 | 1.8 | 11 | 15 ]
 
 echo_color() {
     case $1 in
@@ -113,7 +113,7 @@ print_usage()
 {
     cat <<-EOF
 
-    setup_dk.sh --install-version [1.7 | 1.8 | 11 | 15 ]
+    setup_jdk.sh --install-version [1.7 | 1.8 | 11 | 15 ]
 
     The script will install the Oracle JDK version specified by the --install-version,
     switches the JDK to the installed version and sets the JAVA_HOME env in the
