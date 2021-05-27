@@ -131,7 +131,7 @@ print_usage()
     bash/zsh startup files.
 
 
-    --install-version [7 | 8 | 11 | 15 ]
+    --install-version [1.7 | 1.8 | 11 | 15 ]
         The JDK version to install.
 
     -h prints this text
