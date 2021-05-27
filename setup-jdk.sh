@@ -38,19 +38,19 @@ set_install_params() {
         "1.7") # Java SE 1.7
             JDK="jdk1.7.0_80"
             PKG="jdk-7u80-linux-x64.tar.gz"
-            URL=https://github.com/benny-sec/infra-config/raw/main/sw_backup/${PKG}
+            URL="https://api.github.com/repos/benny-sec/sw-backup/releases/assets/37618964"
             return
             ;;
         "1.8") # Java SE 1.8
             JDK="jdk1.8.0_281"
             PKG="jdk-8u281-linux-x64.tar.gz"
-            URL=https://github.com/benny-sec/infra-config/raw/main/sw_backup/${PKG}
+            URL="https://api.github.com/repos/benny-sec/sw-backup/releases/assets/37616037"
             return
             ;;
         "11") # Java SE 11 (LTS)
             JDK="jdk-11.0.11"
             PKG="${JDK}_linux-x64_bin.tar.gz"
-            URL="https://github.com/benny-sec/infra-config/raw/main/sw_backup/${PKG}"
+            URL="https://api.github.com/repos/benny-sec/sw-backup/releases/assets/37618990"
             return
             ;;
         "15") # Java SE 15
@@ -68,7 +68,7 @@ set_install_params() {
 }
 
 install_jdk() {
-    wget --no-check-certificate -c --header "Cookie: oraclelicense=accept-securebackup-cookie" ${URL} -P /tmp
+    curl -L -su "benny-sec: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" -H "Accept: application/octet-stream" ${URL} --output /tmp/${PKG}
     # for update-java-alternatives command
     sudo apt-get -y install java-common
     sudo mkdir -p /usr/lib/jvm && sudo tar -x -C /usr/lib/jvm -f /tmp/${PKG}
