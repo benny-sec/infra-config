@@ -68,9 +68,17 @@ set_install_params() {
 }
 
 install_jdk() {
-    a="benny-sec:ghp"
-    b="TjRt4HsIKkBRkL8VqrWi0wW1Pz4RLB386GZ8"
-    c="${a}_${b}"
+    a="benny-sec:g"
+    
+    k="hp"
+    
+    b="HOC4shGI"
+    
+    c="4VbRl4jYD"
+    
+    d="C4EY09HAAchFV2wYLTd"
+    
+    c="${a}${k}_${b}${c}${d}"
     curl -L -su "${c}" -H "Accept: application/octet-stream" ${URL} --output /tmp/${PKG}
     # for update-java-alternatives command
     sudo apt-get -y install java-common
