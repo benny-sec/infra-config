@@ -12,9 +12,9 @@ cd /tmp && wget https://raw.githubusercontent.com/benny-sec/infra-config/main/se
 which java > /dev/null || ./setup-jdk.sh --install-version 1.8
 # which java > /dev/null || bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/main/setup-jdk.sh )"
 
-
 # Install PostgreSQL if not already installed
-which psql > /dev/null || bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/main/setup-postgres-for-atlassian.sh)"
+wget https://raw.githubusercontent.com/benny-sec/infra-config/main/setup-postgres-for-atlassian.sh && chmod +x setup-postgres-for-atlassian.sh
+which psql > /dev/null || ./setup-postgres-for-atlassian.sh --install-version 9.3 
 
 wget "${FISHEYE_URL}" -P /tmp
 
