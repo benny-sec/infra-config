@@ -39,5 +39,14 @@ sed -i s/"#set -g history-limit 10000"/"set -g history-limit 100000"/g .tmux.con
 sed -i s/"tmux_conf_copy_to_os_clipboard=false"/"tmux_conf_copy_to_os_clipboard=true"/g .tmux.conf.local
 sed -i s/"#set -g mouse on"/"set -g mouse on"/g .tmux.conf.local
 
+# MUST REVISIT 
+# The below settings are mostly workaround and needs to be reviewed in future.
+
+# sudo -E doesn't seem to honour aliases on Ubuntu 20.04, for e.g. invoke nvim when using sudo vim  
+alias sudo='sudo '
+
+# System wide nvim configuration is to be identified. For now copying the settings to root
+sudo mkdir -p /root/.config/nvim && sudo cp /home/blackhawk/.config/nvim/init.vim /root/.config/nvim/
+
 
 
