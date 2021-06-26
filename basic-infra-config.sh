@@ -48,5 +48,6 @@ alias sudo='sudo '
 # System wide nvim configuration is to be identified. For now copying the settings to root
 sudo mkdir -p /root/.config/nvim && sudo cp /home/blackhawk/.config/nvim/init.vim /root/.config/nvim/
 
-
+# mapping of menu key to backspace and Scroll lock to Casps Lock
+#xmodmap -e "keycode 135 = BackSpace" -e "keycode 78 = Caps_Lock"
 
