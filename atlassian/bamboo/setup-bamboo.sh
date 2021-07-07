@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 
-BAMBOO_PKG="atlassian-bamboo-7.2.2.tar.gz"
+BAMBOO_PKG="atlassian-bamboo-7.2.4.tar.gz"
 BAMBOO_URL="https://Product-downloads.atlassian.com/software/bamboo/downloads/${BAMBOO_PKG}"
 BAMBOO_INSTALL_DIR="/opt/atlassian/bamboo/"
 BAMBOO_DATA_DIR="/var/atlassian/application-data/bamboo"
 
 # Set-up Oracle JDK 1.8
-which java > /dev/null || bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/main/setup-jdk.sh)"
+cd /tmp
+wget  https://raw.githubusercontent.com/benny-sec/infra-config/main/setup-jdk.sh && chmod +x setup-jdk.sh
+which java > /dev/null || /tmp/setup-jdk.sh --install-version 1.8
+
 
 # Install PostgreSQL if not already installed
 which psql > /dev/null || bash -c "$(wget -O- https://raw.githubusercontent.com/benny-sec/infra-config/main/setup-postgres-for-atlassian.sh)"
