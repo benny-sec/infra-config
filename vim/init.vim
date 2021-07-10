@@ -28,3 +28,10 @@ inoremap ZZ <C-O>:x<CR>
 " set xxx to quit vim disregarding all changes
 nnoremap xxx :q!<CR>
 inoremap xxx <C-O>:q!<CR>
+
+" install plugins using vim-plug, this is to be replaced with default plugin manager in neovim
+" we also have fzf installed in ~/.fzf, so this should ideally be Plug '~/.fzf' 
+call plug#begin('~/.config/plugged')
+      Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+      Plug 'junegunn/fzf.vim'
+call plug#end()
