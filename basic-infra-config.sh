@@ -52,7 +52,7 @@ sudo mkdir -p /root/.config/nvim && sudo cp /home/blackhawk/.config/nvim/init.vi
 # but for now couldn't get fzf.vim working with the default package manager
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
+nvim --headless +PlugInstall +qall
 # mapping of menu key to backspace and Scroll lock to Casps Lock
 # xmodmap -e "keycode 135 = BackSpace" -e "keycode 78 = Caps_Lock"
 
