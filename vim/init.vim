@@ -18,6 +18,8 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 
+let mapleader=","
+
 " Use jj to switch to normal mode
 imap jj <Esc>
 " set zz to save the file in both normal and insert mode
@@ -28,8 +30,9 @@ inoremap ZZ <C-O>:x<CR>
 " set xxx to quit vim disregarding all changes
 nnoremap xxx :q!<CR>
 inoremap xxx <C-O>:q!<CR>
+
 " fzf find files 
-nnoremap <silent> <C-f> :Files<CR>
+nnoremap <Leader>f :Files<CR>
 
 " install plugins using vim-plug, this is to be replaced with default plugin manager in neovim
 " we also have fzf installed in ~/.fzf, so this should ideally be Plug '~/.fzf' 
