@@ -33,6 +33,8 @@ inoremap xxx <C-O>:q!<CR>
 
 " fzf find files 
 nnoremap <Leader>f :Files<CR>
+" fzf Buffers
+nnoremap <Leader>b :Buffers<CR>
 
 " install plugins using vim-plug, this is to be replaced with default plugin manager in neovim
 " we also have fzf installed in ~/.fzf, so this should ideally be Plug '~/.fzf' 
