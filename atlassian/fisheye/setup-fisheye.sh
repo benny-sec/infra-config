@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 FISHEYE_PKG="fisheye-4.5.1.zip"
+#FISHEYE_PKG="fisheye-4.8.7-jspsource.zip"
 FISHEYE_URL="https://product-downloads.atlassian.com/software/fisheye/downloads/${FISHEYE_PKG}"
 FISHEYE_INSTALL_DIR="/opt/atlassian/fisheye/"
 FISHEYE_DATA_DIR="/var/atlassian/application-data/fisheye"
@@ -14,7 +15,8 @@ which java > /dev/null || ./setup-jdk.sh --install-version 1.8
 
 # Install PostgreSQL if not already installed
 wget https://raw.githubusercontent.com/benny-sec/infra-config/main/setup-postgres-for-atlassian.sh && chmod +x setup-postgres-for-atlassian.sh
-which psql > /dev/null || ./setup-postgres-for-atlassian.sh --install-version 9.3 
+#which psql > /dev/null || ./setup-postgres-for-atlassian.sh --install-version 9.3
+which psql > /dev/null || ./setup-postgres-for-atlassian.sh
 
 wget "${FISHEYE_URL}" -P /tmp
 
