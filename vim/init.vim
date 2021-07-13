@@ -36,6 +36,11 @@ nnoremap <Leader>f :Files<CR>
 " fzf Buffers
 nnoremap <Leader>b :Buffers<CR>
 
+" Save a file as root (,W)
+command SaveAsSudo :silent execute 'write !sudo tee ' . shellescape(@%, 1) . ' >/dev/null' | :edit!
+nnoremap <Leader>W :SaveAsSudo<CR>
+
+
 " install plugins using vim-plug, this is to be replaced with default plugin manager in neovim
 " we also have fzf installed in ~/.fzf, so this should ideally be Plug '~/.fzf' 
 call plug#begin('~/.config/plugged')
